@@ -106,6 +106,15 @@ Input:
     ]
 }
 ```
+Exemplo de resposta:
+```json
+{
+    "id": 3,
+    "nome": "Fulano",
+    "dataNascimento": "2000-01-01",
+    "enderecos": []
+}
+```
 PUT /clientes/{id}
 Atualiza os dados da pessoa com o ID informado.
 
