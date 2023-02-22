@@ -5,7 +5,7 @@ Avaliação Desenvolvedor Back-end Attornatus
 Este projeto implementa uma API REST para gerenciamento de pessoas e seus endereços.
 
 ### Tecnologias utilizadas
-Java 11<br>
+Java 17<br>
 Spring Boot 3.0.2<br>
 Banco de dados H2 (em memória)
 ### Endpoints da API
@@ -128,7 +128,7 @@ Input:
     "dataNascimento": "1990-01-01"
 }
 ```
-exemplo de resposta:<br>
+Exemplo de resposta:<br>
 Caso a pessoa com o ID informado exista, a API retorna os dados atualizados da pessoa em um objeto JSON. Caso contrário, a API retorna um status 404 (not found).
 ```json
 {
