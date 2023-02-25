@@ -8,6 +8,8 @@ Este projeto implementa uma API REST para gerenciamento de pessoas e seus endere
 Java 17<br>
 Spring Boot 3.0.2<br>
 Banco de dados H2 (em memória)
+### integrações
+Viacep: https://viacep.com.br/ <br>
 ### Endpoints da API
 A API disponibiliza os seguintes endpoints:
 
@@ -57,7 +59,7 @@ Exemplo de resposta:
     }
 ]
 ```
-GET /clientes/{id}<br>
+GET /{id}<br>
 Retorna os dados da pessoa com o ID informado.
 
 Parâmetros
