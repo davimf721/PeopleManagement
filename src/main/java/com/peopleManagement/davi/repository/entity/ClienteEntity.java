@@ -57,6 +57,7 @@ public class ClienteEntity implements Serializable {
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }

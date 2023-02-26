@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class DaviApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(DaviApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(DaviApplication.class, args);
 
-		System.out.println("Server is running at the port: 8080");
-	}
+        System.out.println("Server is running at the port: 8080");
+    }
 
 }

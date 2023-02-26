@@ -1,8 +1,9 @@
 package com.peopleManagement.davi.controller.Dto;
+
 import java.io.Serializable;
 
 
-public class EnderecoApiResponse implements Serializable{
+public class EnderecoApiResponse implements Serializable {
 
     private String cep;
     private String logradouro;
@@ -13,42 +14,47 @@ public class EnderecoApiResponse implements Serializable{
     public EnderecoApiResponse() {
     }
 
-    public EnderecoApiResponse(String cep, String logradouro, String uf,  String localidade) {
+    public EnderecoApiResponse(String cep, String logradouro, String uf, String localidade) {
         this.cep = cep;
         this.logradouro = logradouro;
         this.uf = uf;
         this.localidade = localidade;
     }
 
-    public String getCep(){
+    public String getCep() {
         return cep;
     }
-    public void setCep(String cep){
+
+    public void setCep(String cep) {
         this.cep = cep;
     }
-    public String getLogradouro(){
+
+    public String getLogradouro() {
 
         return logradouro;
 
     }
-    public void setLogradouro(String logradouro){
+
+    public void setLogradouro(String logradouro) {
         this.logradouro = logradouro;
     }
 
-    public String getUf(){
+    public String getUf() {
         return uf;
 
     }
-    public void setUf(String uf)
-    {
+
+    public void setUf(String uf) {
         this.uf = uf;
     }
-    public String getLocalidade(){
+
+    public String getLocalidade() {
 
         return localidade;
 
     }
-    public void setLocalidade(String localidade){
+
+    public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
 }

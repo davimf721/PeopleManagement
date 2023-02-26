@@ -18,6 +18,7 @@ public class ClienteServiceImpl implements ClienteService {
     static final String LINE_SEPARATOR = "line.separator";
     ClienteRepository clienteRepository;
     EnderecoService enderecoService;
+
     public ClienteServiceImpl(ClienteRepository clienteRepository, EnderecoService enderecoService) {
         this.clienteRepository = clienteRepository;
         this.enderecoService = enderecoService;
@@ -25,24 +26,21 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public ClienteDto createCliente(ClienteDto clienteDto) throws Exception {
-       if(!clienteDto.getEndereco().isEmpty()){
-          fillEndereco(clienteDto.getEndereco());
-       }
+        if (!clienteDto.getEndereco().isEmpty()) {
+            fillEndereco(clienteDto.getEndereco());
+        }
         final var clienteCriado = clienteRepository.save(convertToEntity(clienteDto));
         return convertToDto(clienteCriado);
     }
 
     private void fillEndereco(List<EnderecoDto> enderecos) {
         for (EnderecoDto endereco : enderecos) {
-           var enderecoResponse = enderecoService.consultaPorCep(endereco.getCep());
-           endereco.setCidade(enderecoResponse.getCidade());
-           endereco.setLogradouro(enderecoResponse.getLogradouro());
+            var enderecoResponse = enderecoService.consultaPorCep(endereco.getCep());
+            endereco.setCidade(enderecoResponse.getCidade());
+            endereco.setLogradouro(enderecoResponse.getLogradouro());
         }
     }
 
-
-
-    //Método para pegar todos os clientes
     @Override
     public List<ClienteDto> getAllClientes() {
         return clienteRepository.findAll()
@@ -84,7 +82,6 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteEntity;
     }
 
-
     private ClienteDto convertToDto(ClienteEntity clienteEntity) {
         ClienteDto clienteDto = new ClienteDto();
         clienteDto.setId(clienteEntity.getId());
@@ -98,7 +95,6 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteDto;
     }
 
-    //Converters de endereço
     private EnderecoEntity convertEnderecoToEntity(EnderecoDto enderecoDto) {
         EnderecoEntity enderecoEntity = new EnderecoEntity();
         enderecoEntity.setId(enderecoDto.getId());
@@ -122,3 +118,4 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
 }
+

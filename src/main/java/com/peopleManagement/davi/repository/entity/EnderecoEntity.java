@@ -2,24 +2,26 @@ package com.peopleManagement.davi.repository.entity;
 
 
 import jakarta.persistence.*;
+
 import java.io.Serializable;
 
 @Entity
-@Table(name="endereco")
+@Table(name = "endereco")
 public class EnderecoEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="cep")
+    @Column(name = "cep")
     private String cep;
-    @Column(name="logradouro")
+    @Column(name = "logradouro")
     private String logradouro;
-    @Column(name="principal")
+    @Column(name = "principal")
     private boolean principal;
-    @Column(name="numero")
+    @Column(name = "numero")
     private String numero;
-    @Column(name="cidade")
+    @Column(name = "cidade")
     private String cidade;
+    @JoinColumn(name = "cliente_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private ClienteEntity cliente;
 

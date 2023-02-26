@@ -1,10 +1,11 @@
 package com.peopleManagement.davi.service;
-import com.peopleManagement.davi.controller.Dto.EnderecoDto;
 
-import java.util.List;
+import com.peopleManagement.davi.controller.Dto.ClienteDto;
+import com.peopleManagement.davi.controller.Dto.EnderecoDto;
 
 public interface EnderecoService {
 
-    List<EnderecoDto> adicionarEndereco(Long id, EnderecoDto enderecoDto) throws Exception;
+    EnderecoDto adicionarEndereco(EnderecoDto enderecoDto, ClienteDto clienteDto) throws Exception;
+
     EnderecoDto consultaPorCep(String cep);
 }
