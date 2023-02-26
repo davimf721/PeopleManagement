@@ -10,13 +10,14 @@ Spring Boot 3.0.2<br>
 Banco de dados H2 (em memória)
 ### integrações
 Viacep: https://viacep.com.br/ <br>
+Swagger: http://localhost:8080/swagger-ui/index.html#/
 ### Endpoints da API
 A API disponibiliza os seguintes endpoints:
 
 #### Clientes
 GET /clientes<br>
-Retorna a lista de todas as pessoas cadastradas no sistema.
-Exemplo de resposta:
+Retorna a lista de todas as pessoas cadastradas no sistema.<br>
+Output Example:
 ```json
 [
     {
@@ -27,7 +28,7 @@ Exemplo de resposta:
             {
                 "id": 1,
                 "logradouro": "Rua A",
-                "cep": "12345-678",
+                "cep": "12345678",
                 "numero": "10",
                 "cidade": "São Paulo",
                 "principal": true
@@ -35,7 +36,7 @@ Exemplo de resposta:
             {
                 "id": 2,
                 "logradouro": "Rua B",
-                "cep": "12345-678",
+                "cep": "12345678",
                 "numero": "20",
                 "cidade": "São Paulo",
                 "principal": false
@@ -50,7 +51,7 @@ Exemplo de resposta:
             {
                 "id": 3,
                 "logradouro": "Rua C",
-                "cep": "12345-678",
+                "cep": "12345678",
                 "numero": "30",
                 "cidade": "Rio de Janeiro",
                 "principal": true
@@ -63,7 +64,8 @@ GET /{id}<br>
 Retorna os dados da pessoa com o ID informado.
 
 Parâmetros
-id: ID da pessoa a ser consultada.
+id: ID da pessoa a ser consultada.<br>
+Output Example:
 ```json
 {
     "id": 1,
@@ -73,7 +75,7 @@ id: ID da pessoa a ser consultada.
         {
             "id": 1,
             "logradouro": "Rua A",
-            "cep": "12345-678",
+            "cep": "12345678",
             "numero": "10",
             "cidade": "São Paulo",
             "principal": true
@@ -81,7 +83,7 @@ id: ID da pessoa a ser consultada.
         {
             "id": 2,
             "logradouro": "Rua B",
-            "cep": "12345-678",
+            "cep": "12345678",
             "numero": "20",
             "cidade": "São Paulo",
             "principal": false
@@ -91,47 +93,53 @@ id: ID da pessoa a ser consultada.
 ```
 POST /clientes
 Cria uma nova pessoa no sistema.
-
-Input:
+<br>
+Input Example:
 ```json
 {
     "nome": "Fulano",
-    "dataNascimento": "01012000",
+    "dataNascimento": "200000101",
     "endereco": [
     {
-    "logradouro": "Rua B",
-            "cep": "12345-678",
+            "cep": "12345678",
             "numero": "20",
-            "cidade": "São Paulo",
             "principal": true
-    }
+		}
     ]
 }
 ```
-Exemplo de resposta:
+Output Example:
 ```json
 {
     "id": 3,
     "nome": "Fulano",
     "dataNascimento": "2000-01-01",
-    "enderecos": []
+    "enderecos": [{
+			"id": 1,
+			"logradouro": "Rua A",
+			"principal": true,
+			"numero": "20",
+			"cep": "12345678",
+			"cidade": "Florianópolis"
+		}]
 }
 ```
 PUT /clientes/{id}
 Atualiza os dados da pessoa com o ID informado.
 
 Parâmetros
-id: ID da pessoa a ser atualizada.
+id: ID da pessoa a ser atualizada.<br>
 
-Input:
+Input Example:
 ```json
 {
     "nome": "João Silva",
-    "dataNascimento": "1990-01-01"
+    "dataNascimento": "19900101"
 }
 ```
 Exemplo de resposta:<br>
-Caso a pessoa com o ID informado exista, a API retorna os dados atualizados da pessoa em um objeto JSON. Caso contrário, a API retorna um status 404 (not found).
+Caso a pessoa com o ID informado exista, a API retorna os dados atualizados da pessoa em um objeto JSON. Caso contrário, a API retorna um status 404 (not found).<br>
+Output Example:
 ```json
 {
     "id": 1,
@@ -141,7 +149,7 @@ Caso a pessoa com o ID informado exista, a API retorna os dados atualizados da p
         {
             "id": 1,
             "logradouro": "Rua A",
-            "cep": "12345-678",
+            "cep": "12345678",
             "numero": "10",
             "cidade": "São Paulo",
             "principal": true
@@ -149,11 +157,43 @@ Caso a pessoa com o ID informado exista, a API retorna os dados atualizados da p
         {
             "id": 2,
             "logradouro": "Rua B",
-            "cep": "12345-678",
+            "cep": "12345678",
             "numero": "20",
             "cidade": "São Paulo",
             "principal": false
         }
     ]
+}
+```
+### Enderecos
+GET /enderecos/cep/{cep}
+- consulta a api do cep <br>
+Output Example:
+```json
+{
+	"cep": "12345678",
+	"logradouro": "Rua X",
+	"uf": "SP",
+	"localidade": "São Paulo"
+}
+```
+POST /enderecos/cliente/{id} <br>
+Input Example:
+```json
+{
+	"cep": "02957050",
+	"numero": "20",
+	"principal": true
+}
+```
+Output Example:
+```json
+{
+	"id": 2,
+	"logradouro": "Rua Rufino de Souza Lobato",
+	"principal": true,
+	"numero": "20",
+	"cep": "02957050",
+	"cidade": null
 }
 ```
