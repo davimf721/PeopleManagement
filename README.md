@@ -1,5 +1,5 @@
 # People Management
-Avaliação Desenvolvedor Back-end Attornatus
+Aplicação para gerenciamento de usuarios
 
 ## Documentação do projeto
 Este projeto implementa uma API REST para gerenciamento de pessoas e seus endereços.
